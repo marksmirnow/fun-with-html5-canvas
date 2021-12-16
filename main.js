@@ -16,11 +16,15 @@ let lastY = 0;
 
 let direction = true;
 
+let hue = 0;
+
 const draw = (e) => {
 
 	if (!isDrawing) return;
 	let [drawX, drawY] = [e.offsetX, e.offsetY];
 	console.log(drawX, drawY);
+
+	ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
 
 	ctx.beginPath();
 	ctx.moveTo(lastX, lastY);
@@ -43,6 +47,11 @@ const draw = (e) => {
 	}
 	if (ctx.lineWidth <= 1) {
 		direction = true;
+	}
+
+	hue++;
+	if (hue > 360) {
+		hue = 0;
 	}
 };
 
