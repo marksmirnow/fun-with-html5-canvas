@@ -12,6 +12,11 @@ const draw = (e) => {
 	if (!isDrawing) return;
 	[drawX, drawY] = [e.offsetX, e.offsetY];
 	console.log(drawX, drawY);
+
+	ctx.beginPath();
+	ctx.moveTo(0, 0);
+	ctx.lineTo(drawX, drawY);
+	ctx.stroke();
 };
 
 drawField.addEventListener('mousemove', draw);
