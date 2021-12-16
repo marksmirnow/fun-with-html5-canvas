@@ -10,8 +10,8 @@ ctx.strokeStyle = 'hsl(100, 100%, 50%)';
 let isDrawing = false;
 
 // * Start line coordinates
-let lastX = 0;
-let lastY = 0;
+let startDrawX = 0;
+let startDrawY = 0;
 
 let direction = true;
 
@@ -25,13 +25,13 @@ const draw = (e) => {
 	ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
 
 	ctx.beginPath();
-	ctx.moveTo(lastX, lastY);
+	ctx.moveTo(startDrawX, startDrawY);
 	ctx.lineTo(drawX, drawY);
 	ctx.stroke();
 
 	// * Update begin coords
-	lastX = e.offsetX;
-	lastY = e.offsetY;
+	startDrawX = e.offsetX;
+	startDrawY = e.offsetY;
 
 	if (direction) {
 		ctx.lineWidth++;
@@ -56,7 +56,7 @@ drawField.addEventListener('mousemove', draw);
 drawField.addEventListener('mousedown', (e) => {
 	isDrawing = true;
 	// * Update begin coords when not drawing
-	[lastX, lastY] = [e.offsetX, e.offsetY];
+	[startDrawX, startDrawY] = [e.offsetX, e.offsetY];
 });
 drawField.addEventListener('mouseup', () => isDrawing = false);
 drawField.addEventListener('mouseout', () => isDrawing = false);
