@@ -6,6 +6,7 @@ const ctx = (drawField.getContext) ? drawField.getContext('2d') : 'Explorer suck
 console.log(ctx);
 ctx.lineWidth = 50;
 ctx.lineCap = 'round';
+ctx.strokeStyle = 'hsl(100, 100%, 50%)';
 
 let isDrawing = false;
 
