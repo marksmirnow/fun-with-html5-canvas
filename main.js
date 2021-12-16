@@ -1,6 +1,6 @@
-const draw = document.querySelector('.draw');
-draw.width = window.innerWidth;
-draw.height = window.innerHeight;
+const drawField = document.querySelector('.draw');
+drawField.width = window.innerWidth;
+drawField.height = window.innerHeight;
 
-const ctx = (draw.getContext) ? draw.getContext('2d') : 'Explorer sucks';
+const ctx = (drawField.getContext) ? drawField.getContext('2d') : 'Explorer sucks';
 console.log(ctx);
