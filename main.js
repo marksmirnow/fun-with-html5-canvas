@@ -7,19 +7,32 @@ console.log(ctx);
 
 let isDrawing = false;
 
+// * Start line coordinates
+let lastX = 0;
+let lastY = 0;
+
 const draw = (e) => {
 
 	if (!isDrawing) return;
-	[drawX, drawY] = [e.offsetX, e.offsetY];
+	let [drawX, drawY] = [e.offsetX, e.offsetY];
 	console.log(drawX, drawY);
 
 	ctx.beginPath();
-	ctx.moveTo(0, 0);
+	ctx.moveTo(lastX, lastY);
 	ctx.lineTo(drawX, drawY);
 	ctx.stroke();
+
+	// * Update begin coords
+	lastX = e.offsetX;
+	lastY = e.offsetY;
+	console.log(`lastX: ${lastX}, lastY: ${lastY}`);
 };
 
 drawField.addEventListener('mousemove', draw);
-drawField.addEventListener('mousedown', () => isDrawing = true);
+drawField.addEventListener('mousedown', (e) => {
+	isDrawing = true;
+	// * Update begin coords when not drawing
+	[lastX, lastY] = [e.offsetX, e.offsetY];
+});
 drawField.addEventListener('mouseup', () => isDrawing = false);
 drawField.addEventListener('mouseout', () => isDrawing = false);
