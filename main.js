@@ -20,13 +20,12 @@ let hue = 0;
 const draw = (e) => {
 
 	if (!isDrawing) return;
-	let [drawX, drawY] = [e.offsetX, e.offsetY];
 
 	ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
 
 	ctx.beginPath();
 	ctx.moveTo(startDrawX, startDrawY);
-	ctx.lineTo(drawX, drawY);
+	ctx.lineTo(e.offsetX, e.offsetY);
 	ctx.stroke();
 
 	// * Update begin coords
