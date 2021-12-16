@@ -13,6 +13,8 @@ let isDrawing = false;
 let lastX = 0;
 let lastY = 0;
 
+let direction = true;
+
 const draw = (e) => {
 
 	if (!isDrawing) return;
@@ -28,6 +30,19 @@ const draw = (e) => {
 	lastX = e.offsetX;
 	lastY = e.offsetY;
 	console.log(`lastX: ${lastX}, lastY: ${lastY}`);
+
+	if (direction) {
+		ctx.lineWidth++;
+	} else {
+		ctx.lineWidth--;
+	}
+
+	if (ctx.lineWidth >= 100) {
+		direction = false;
+	}
+	if (ctx.lineWidth <= 1) {
+		direction = true;
+	}
 };
 
 drawField.addEventListener('mousemove', draw);
