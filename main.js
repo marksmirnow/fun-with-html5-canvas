@@ -4,6 +4,8 @@ drawField.height = window.innerHeight;
 
 const ctx = (drawField.getContext) ? drawField.getContext('2d') : 'Explorer sucks';
 console.log(ctx);
+ctx.lineWidth = 50;
+ctx.lineCap = 'round';
 
 let isDrawing = false;
 
