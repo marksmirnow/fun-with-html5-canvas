@@ -3,7 +3,6 @@ drawField.width = window.innerWidth;
 drawField.height = window.innerHeight;
 
 const ctx = (drawField.getContext) ? drawField.getContext('2d') : 'Explorer sucks';
-console.log(ctx);
 ctx.lineWidth = 50;
 ctx.lineCap = 'round';
 ctx.strokeStyle = 'hsl(100, 100%, 50%)';
@@ -22,7 +21,6 @@ const draw = (e) => {
 
 	if (!isDrawing) return;
 	let [drawX, drawY] = [e.offsetX, e.offsetY];
-	console.log(drawX, drawY);
 
 	ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
 
@@ -34,7 +32,6 @@ const draw = (e) => {
 	// * Update begin coords
 	lastX = e.offsetX;
 	lastY = e.offsetY;
-	console.log(`lastX: ${lastX}, lastY: ${lastY}`);
 
 	if (direction) {
 		ctx.lineWidth++;
